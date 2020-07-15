@@ -15,7 +15,14 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormlyModule.forRoot(),
+    FormlyModule.forRoot({
+      validationMessages:[
+        {
+          name:'required',
+          message:'This field is required'
+        }
+      ]
+    }),
     FormlyMaterialModule,
     MatToolbarModule,MatButtonModule,
     BrowserAnimationsModule

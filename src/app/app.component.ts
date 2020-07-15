@@ -13,6 +13,7 @@ export class AppComponent {
   constructor(private data: DataService) {}
   form = new FormGroup({});
   model = {
+    id:12345,
     firstname: 'Soumya',
     lastname: 'Rout',
     age: 28,
@@ -21,10 +22,14 @@ export class AppComponent {
   };
   fields: FormlyFieldConfig[] = [
     {
+      key:'id'
+    },
+    {
       key: 'firstname',
       type: 'input',
       templateOptions: {
         label: 'First Name',
+        required:true
       },
     },
     {
@@ -32,6 +37,7 @@ export class AppComponent {
       type: 'input',
       templateOptions: {
         label: 'Last Name',
+        required:true
       },
     },
     {
