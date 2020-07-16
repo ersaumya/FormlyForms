@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule } from '@ngx-formly/core';
+import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+
+export function minValidationMessage(err,field:FormlyFieldConfig){
+  return `Age must be greater than ${err.min}`;
+}
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,16 +20,21 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     ReactiveFormsModule,
     FormlyModule.forRoot({
-      validationMessages:[
+      validationMessages: [
         {
-          name:'required',
-          message:'This field is required'
-        }
-      ]
+          name: 'required',
+          message: 'This field is required',
+        },
+        {
+          name: 'min',
+          message: minValidationMessage,
+        },
+      ],
     }),
     FormlyMaterialModule,
-    MatToolbarModule,MatButtonModule,
-    BrowserAnimationsModule
+    MatToolbarModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

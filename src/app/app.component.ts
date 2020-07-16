@@ -46,6 +46,7 @@ export class AppComponent {
       templateOptions: {
         type: 'number',
         label: 'Age',
+        min:18
       },
     },
     {
