@@ -48,6 +48,11 @@ export class AppComponent {
         label: 'Age',
         min:18
       },
+      validation:{
+        messages:{
+          min:'Hey! age must me greater than 18'
+        }
+      }
     },
     {
       key: 'countryId',
